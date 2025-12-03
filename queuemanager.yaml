@@ -1,0 +1,37 @@
+```
+mq-gitops-config/
+  ansible/
+    inventories/
+      dev/hosts.yaml
+      prod/hosts.yaml
+    roles/
+      mq_config/
+        tasks/
+          main.yaml
+        templates/
+          mq-config.mqsc.j2
+        vars/
+          apps/
+            payments.yaml
+            core-banking.yaml
+    playbooks/
+      generate-mqsc-and-configmap.yaml
+      export-mq-config.yaml
+      restore-mq-config.yaml
+
+  gitops/
+    base/
+      queuemanager.yaml
+      mq-config-configmap.yaml
+    overlays/
+      dev/
+        kustomization.yaml
+        patch-namespace.yaml
+      prod/
+        kustomization.yaml
+        patch-namespace.yaml
+
+  dr/
+    exports/
+      QM1-latest.mqsc
+```
